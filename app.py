@@ -9,8 +9,8 @@ def index():
     if request.method == "POST":
         location = request.form.get("location")
         weather_data = get_weather_data(location)
-        return render_template("index.html", weather_data=weather_data)
-    return render_template("index.html", weather_data=None)
+        return render_template("weather.html", weather_data=weather_data)
+    return render_template("weather.html", weather_data=None)
 
 
 
