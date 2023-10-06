@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather Update</title>
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px auto;
+            width: 350px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+    </style>
+
+    <!-- Include Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Weather Update for {{ weather_data.location }}</h1>
-    <p>Temperature: {{ weather_data.temperature }}°C</p>
-    <p>Description: {{ weather_data.description }}</p>
-    <a href="/">Back to Home</a>
+    <h1>Weather App</h1>
+    <form method="POST">
+        <label for="location">Enter Location:</label>
+        <input type="text" name="location" id="location" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    {% if weather_data %}
+        <h2>Weather Details {{ location }}</h2>
+        <p>
+            <i class="fas fa-thermometer-half icon"></i> Temperature: {{ weather_data['values']['temperature'] }}°C
+        </p>
+        <p>
+            <i class="fas fa-tint icon"></i> Humidity: {{ weather_data['values']['humidity'] }}%
+        </p>
+        <p>
+            <i class="fas fa-wind icon"></i> Wind Speed: {{ weather_data['values']['windSpeed'] }} km/h
+        </p>
+        <!-- Add more data fields as needed -->
+    {% endif %}
 </body>
 </html>
