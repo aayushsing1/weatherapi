@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
         body {
@@ -8,6 +9,9 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            background-image: url('https://i.postimg.cc/MTYSQbT3/beautiful-mountains.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
         }
 
         h1 {
@@ -83,15 +87,16 @@
     {% if weather_data %}
         <h2>Weather Details {{ location }}</h2>
         <p>
-            <i class="fas fa-thermometer-half icon"></i> Temperature: {{ weather_data['values']['temperature'] }}°C
+            <i class="fas fa-thermometer-half icon"></i><span style="color: black;" >Temperature: </span> <span style="color: red;">{{ weather_data['values']['temperature'] }}°C</span>
         </p>
         <p>
-            <i class="fas fa-tint icon"></i> Humidity: {{ weather_data['values']['humidity'] }}%
+            <i class="fas fa-tint icon"></i> <span style="color: black;" > Humidity: </span> <span style="color: red;">{{ weather_data['values']['humidity'] }}%</span>
         </p>
         <p>
-            <i class="fas fa-wind icon"></i> Wind Speed: {{ weather_data['values']['windSpeed'] }} km/h
+            <i class="fas fa-wind icon"></i><span style="color: black;" >windSpeed: </span> <span style="color: red;">{{ weather_data['values']['windSpeed'] }} km/h</span>
         </p>
-        <!-- Add more data fields as needed -->
-    {% endif %}
+    <!-- Add more data fields as needed -->
+{% endif %}
+
 </body>
 </html>
